@@ -1,0 +1,15 @@
+//ATTACCHI FMSS
+
+-- FMU
+
+- ogni n step aumenta velocità al massimo
+- non aggiorna la posizione ai sensori
+- Aumentare del 50% valore in ingresso all'attuatore;
+- per n step ogni k step output = attack(input); (sensore e/ o attuatore)
+
+-- CONTROL 
+
+- Scambiare valori di due sensori;
+- per n step ogni k step output = attack(input); (sensore e/ o attuatore)
+- Produrre valori in complemento a 255;
+
