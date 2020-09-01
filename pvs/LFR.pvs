@@ -5,9 +5,11 @@ LFR: THEORY
   %-- light sensors
   LightSensorReading: TYPE = { x: nonneg_real | x <= 255 }
   LightSensors: TYPE = [#
-    left: LightSensorReading,
-    right: LightSensorReading
-  #]
+    leftMid: LightSensorReading,
+    rightMid: LightSensorReading,
+    leftFar: LightSensorReading,
+    rightFar: LightSensorReading
+#]
  
 
   %-- motor
@@ -25,22 +27,22 @@ LFR: THEORY
 	 #]
 
   init_state: State =
-      (# lightSensors := (# left := 250, right := 0 #),
+      (# lightSensors := (# lefMid := 250, rightMid := 0, lefFar := 250, rightFar := 0 #),
          motorSpeed := (# left := 0, right := 0 #)
        #)
 
   update_left_motor_speed(st: State): Speed =
    LET ls = lightSensors(st) IN
      COND ls`right < 150 AND ls`left < 150 -> 0.4,
-          ls`right < 150 AND ls`left > 150 -> 0.5,
-          ls`right > 150 AND ls`left < 150 -> 0.1
+          ls`right < 150 AND ls`left > 150 -> 0.5, %-- turn right
+          ls`right > 150 AND ls`left < 150 -> 0.1 %--turn left
     ENDCOND
 
   update_right_motor_speed(st: State): Speed =
    LET ls = lightSensors(st) IN  
      COND ls`right < 150 AND ls`left < 150 -> -0.4,
-          ls`right < 150 AND ls`left > 150 -> -0.1,
-          ls`right > 150 AND ls`left < 150 -> -0.5
+          ls`right < 150 AND ls`left > 150 -> -0.1, %--turn right
+          ls`right > 150 AND ls`left < 150 -> -0.5 %--turn left
     ENDCOND
 
   tick(st: State): State =
@@ -58,11 +60,12 @@ KTH_STEP(N:nat) : RECURSIVE State =
 	     tick(KTH_STEP(N-1)) 
   ENDIF
  MEASURE N			  
-			  
+
+%--			  
 input_hypothesis(st:State): State =
 	st WITH[lightSensors := (# left := st`lightSensors`left * 4 / 5, right := st`lightSensors`right + 40  #)]
 
-  KTH_STEP_1(N:nat) : RECURSIVE State =
+KTH_STEP_1(N:nat) : RECURSIVE State =
   IF N=0 THEN
 		init_state
          ELSE
