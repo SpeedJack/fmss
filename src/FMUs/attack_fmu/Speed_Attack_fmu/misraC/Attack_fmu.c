@@ -5,13 +5,13 @@
 void init(State* st) { 
     st->previous_mode = X1;
     st->mode = X1;
-    st->attack_time = 0.0f;
+    st->attack_time = 5.0f;
     st->attack_value = 0.0f;
     st->input = 0.0f;
     st->output = 0.0f;
     st->step_size = 0.0f;
     st->time = 0.0f;
-    st->last_attack_time = 0.0f;
+    st->last_attack_time = 10.0f;
 }
 
 /**
@@ -49,7 +49,7 @@ State* tick(State* st) {
         st->output = st->attack_value;
         st->time = st->time + st->step_size;
         enter(X1, st);
-    } else if (st->mode == X1 && (st->time >= st->attack_time) && (st->time >= st->last_attack_time) ){
+    } else if (st->mode == X1 && /*(st->time >= st->attack_time) &&*/ (st->time >= st->last_attack_time) ){
 	 #ifdef DBG
         _dbg_print_condition("st->mode == X1 && (st->time >= st->attack_time) && (st->time >= st->last_attack_time)");
         #endif

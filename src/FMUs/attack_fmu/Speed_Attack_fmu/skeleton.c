@@ -41,7 +41,7 @@ if(first == 0){
     st.attack_time = fmiBuffer.realBuffer[1] ;
     st.attack_value = fmiBuffer.realBuffer[2] ;
     st.step_size = fmiBuffer.realBuffer[5] ;
-    
+    st.last_attack_time = fmiBuffer.realBuffer[7] ;
     first = 1;
 }
 	
