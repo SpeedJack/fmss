@@ -2,14 +2,13 @@
 
 -- FMU
 
-- ogni n step aumenta velocità al massimo
-- non aggiorna la posizione ai sensori
-- Aumentare del 50% valore in ingresso all'attuatore;
-- per n step ogni k step output = attack(input); (sensore e/ o attuatore)
+- ogni n step aumenta velocità al massimo - Nico
+- Aumentare del 50% valore in ingresso all'attuatore; - Nicco
+- per n step ogni k step output = attack(input); (sensore e/ o attuatore) - Lore
 
 -- CONTROL 
 
-- Scambiare valori di due sensori;
-- per n step ogni k step output = attack(input); (sensore e/ o attuatore)
-- Produrre valori in complemento a 255;
+- Scambiare valori di due sensori; - Nicco
+- per n step ogni k step output = attack(input); (sensore e/ o attuatore) - Nicola
+- Produrre valori in complemento a 255; -Lore
 

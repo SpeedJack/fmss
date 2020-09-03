@@ -50,8 +50,8 @@ void actuator_attack(State* st) {
 }
 
 State* tick(State* st) {
-    sensor_attack(st);
-    // assert( per_tick(st) );
+    /*sensor_attack(st);*/
+    /* assert( per_tick(st) ); */
     if (st->mode == AUTO && ( st->lfRightVal <= st->LSR_THRESHOLD && st->lfLeftVal <= st->LSR_THRESHOLD )) {
         #ifdef DBG
         _dbg_print_condition("st->mode == AUTO && ( st->lfRightVal <= st->LSR_THRESHOLD && st->lfLeftVal <= st->LSR_THRESHOLD )");
@@ -90,7 +90,7 @@ State* tick(State* st) {
         enter(AUTO, st);
     }
 
-//    actuator_attack(st);
+/*    actuator_attack(st); */
     #ifdef DBG
     _dbg_print_state(st);
     #endif

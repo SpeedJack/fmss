@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fmiModelDescription 	fmiVersion="2.0"
+						modelName="Attack_fmu"
+						guid="{abb4bff1-d423-4e02-90d9-011f519869ff}"
+						description=""
+						author="..author name.."
+						version="Version 1"
+						copyright=""
+						license="PVS License"
+						generationTool="PVSio-web"
+						variableNamingConvention="flat"
+						numberOfEventIndicators="0">
+	<CoSimulation 	modelIdentifier="Attack_fmu"
+					needsExecutionTool="false"
+					canHandleVariableCommunicationStepSize="true"
+					canInterpolateInputs="false"
+					maxOutputDerivativeOrder="0"
+					canRunAsynchronuously="false"
+					canBeInstantiatedOnlyOncePerProcess="false"
+					canNotUseMemoryManagementFunctions="true"
+					canGetAndSetFMUstate="false"
+					canSerializeFMUstate="false"
+					providesDirectionalDerivative="false">
+					
+			<SourceFiles>
+				<File name="fmu.c" />
+				<File name="skeleton.c" />
+				<File name="misraC/Attack_fmu.c" />
+			</SourceFiles>
+			
+		</CoSimulation>
+	<LogCategories>
+		<Category name="logAll" />
+		<Category name="logError" />
+		<Category name="logFmiCall" />
+		<Category name="Protocol" />
+		<Category name="Error" />
+	</LogCategories>
+
+	<ModelVariables>
+		<ScalarVariable name="attack_time" valueReference="1" causality="parameter" variability="fixed"  initial="exact" ><Real start="0" /></ScalarVariable>
+    
+		<ScalarVariable name="attack_value" valueReference="2" causality="parameter" variability="fixed"  initial="exact" ><Real start="0" /></ScalarVariable>
+    
+		<ScalarVariable name="input" valueReference="3" causality="input" variability="continuous" ><Real start="0" /></ScalarVariable>
+    
+		<ScalarVariable name="output" valueReference="4" causality="output" variability="continuous" ><Real  /></ScalarVariable>
+    
+		<ScalarVariable name="step_size" valueReference="5" causality="parameter" variability="fixed"  initial="exact" ><Real start="0" /></ScalarVariable>
+    
+		<ScalarVariable name="time" valueReference="6" causality="output" variability="continuous" ><Real  /></ScalarVariable>
+	<ScalarVariable name="last_attack_time" valueReference="7" causality="parameter" variability="fixed"  initial="exact" ><Real start="0" /></ScalarVariable>    
+</ModelVariables>
+
+	<ModelStructure>
+	<Outputs>
+			<Unknown index="4"  dependencies=""/>
+            
+			<Unknown index="6"  dependencies=""/>
+            
+	</Outputs>
+
+	</ModelStructure>
+</fmiModelDescription>
