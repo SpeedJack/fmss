@@ -54,6 +54,16 @@ State* tick(State* st)
 		enter(X1, st);
 	}
 
+	else if (st->mode == X1) {
+#ifdef DBG
+		_dbg_print_condition("st->mode == X1");
+#endif
+		leave(X1, st);
+		st->output = st->input;
+		st->time = st->time + st->step_size;
+		enter(X1, st);
+	}
+
 #ifdef DBG
 	_dbg_print_state(st);
 #endif

@@ -30,10 +30,16 @@ void leave(Mode m, State* st)
 
 void sensor_attack(State* st)
 {
-	st->lfFarRightVal = st->lfFarLeftVal;
-	st->lfMidRightVal = st->lfMidLeftVal;
-	st->lfFarLeftVal = st->lfFarRightVal;
-	st->lfMidLeftVal = st->lfMidRightVal;
+	State s;
+	s.lfFarRightVal = st->lfFarLeftVal;
+	s.lfMidRightVal = st->lfMidLeftVal;
+	s.lfFarLeftVal = st->lfFarRightVal;
+	s.lfMidLeftVal = st->lfMidRightVal;
+
+	st->lfFarRightVal = s.lfFarRightVal;
+	st->lfMidRightVal = s.lfMidRightVal;
+	st->lfFarLeftVal = s.lfFarLeftVal;
+	st->lfMidLeftVal = s.lfMidLeftVal;
 }
 
 State* tick(State* st)
