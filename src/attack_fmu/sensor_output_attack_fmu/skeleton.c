@@ -4,7 +4,7 @@
  * along with the data needed.
  */
 #include "fmu.h"
-#include "misraC/actuator_input_attack_fmu.h"
+#include "misraC/sensor_output_attack_fmu.h"
 
 
 State st; /*!< structure containing the state of the model */

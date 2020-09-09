@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-I.
-FMUNAME = actuator_input_attack_fmu
+FMUNAME = actuator_attack_ctrl
 DESTDIR = ../../../into-cps/FMUs
-DESTFILES = actuator_input_attack_fmu_1.fmu actuator_input_attack_fmu_2.fmu
+DESTFILES = actuator_attack_ctrl.fmu
 
 %.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)

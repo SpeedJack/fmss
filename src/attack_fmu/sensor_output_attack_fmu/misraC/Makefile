@@ -4,8 +4,8 @@ CC = gcc
 CFLAGS = -Wall -O2 -Werror -Wmissing-noreturn -Wpacked -Wunreachable-code
 LDFLAGS= -lm
 DEBUG = -Wall -O2 -Werror -Wmissing-noreturn -Wpacked -Wunreachable-code -D DEBUG
-HEAD = actuator_input_attack_fmu.h
-SOURCES = actuator_input_attack_fmu.c main.c
+HEAD = sensor_output_attack_fmu.h
+SOURCES = sensor_output_attack_fmu.c main.c
 OBJ = $(SOURCES:.c=.o)
 DEBUGFILES = main.dSYM
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <fmiModelDescription	fmiVersion="2.0"
-		modelName="actuator_input_attack_fmu"
+		modelName="sensor_output_attack_fmu"
 		guid="{abb4bff1-d423-4e02-90d9-011f519869ff}"
 		description=""
 		author="Niccolò Scatena"
@@ -10,7 +10,7 @@
 		generationTool="PVSio-web"
 		variableNamingConvention="flat"
 		numberOfEventIndicators="0">
-	<CoSimulation	modelIdentifier="actuator_input_attack_fmu"
+	<CoSimulation	modelIdentifier="sensor_output_attack_fmu"
 			needsExecutionTool="false"
 			canHandleVariableCommunicationStepSize="true"
 			canInterpolateInputs="false"
@@ -24,7 +24,7 @@
 		<SourceFiles>
 			<File name="fmu.c" />
 			<File name="skeleton.c" />
-			<File name="misraC/actuator_input_attack_fmu.c" />
+			<File name="misraC/sensor_output_attack_fmu.c" />
 		</SourceFiles>
 	</CoSimulation>
 	<LogCategories>
