@@ -30,6 +30,7 @@ void leave(Mode m, State* st)
 
 void sensor_attack(State* st)
 {
+	/* attack */
 	st->lfFarRightVal = 255.0f - st->lfFarRightVal;
 	st->lfMidRightVal = 255.0f - st->lfMidRightVal;
 	st->lfFarLeftVal = 255.0f - st->lfFarLeftVal;

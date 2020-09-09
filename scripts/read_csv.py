@@ -7,6 +7,7 @@ from matplotlib import pyplot as plt
 from os import listdir
 from os.path import isfile, join, basename, exists
 
+# base multi models dir
 mmdir = join("..", "into-cps", "Multi-models")
 
 parser = argparse.ArgumentParser(description='Get line following robot path.')
@@ -15,6 +16,7 @@ parser.add_argument('path', type=str, nargs='?', default=None, help='csv path in
 
 args = parser.parse_args()
 
+# show a menu, return index of selected entry
 def showmenu(objname, entries):
 	idx = 1
 	if len(entries) == 0:
@@ -36,15 +38,19 @@ csvfile = None
 if args.path is None:
 	print("Searching in '" + str(mmdir) + "'...")
 	print()
+	# ask for multi-model
 	mms = [f for f in sorted(listdir(mmdir)) if not isfile(join(mmdir, f))]
 	mmidx = showmenu("multi-model", mms)
 	print()
+	# ask for co-sim
 	cosims = [f for f in sorted(listdir(join(mmdir, mms[mmidx]))) if not isfile(join(mmdir, mms[mmidx], f))]
 	cosimidx = showmenu("co-sim", cosims)
 	print()
+	# ask for result
 	results = [f for f in sorted(listdir(join(mmdir, mms[mmidx], cosims[cosimidx]))) if not isfile(join(mmdir, mms[mmidx], cosims[cosimidx], f))]
 	residx = showmenu("result", results)
 	print()
+	#get csv file path
 	csvfile = join(mmdir, mms[mmidx], cosims[cosimidx], results[residx], "outputs.csv")
 else:
 	csvfile = args.path
@@ -61,7 +67,7 @@ with open(csvfile) as csvfile:
 	xidx = 0
 	yidx = 1
 	idx = 0
-	for title in titles:
+	for title in titles: # search for robot_x and robot_y
 		if (title.endswith("robot_x")):
 			xidx = idx
 		if (title.endswith("robot_y")):
@@ -78,10 +84,10 @@ data = {titles[xidx]: x, titles[yidx]: y}
 print("Plotting...")
 
 plt.figure()
-if not args.n:
+if not args.n: # show path in bg
 	img = plt.imread("map.png")
 	plt.imshow(img, extent=[-0.3, 0.3, -0.4, 0.4])
-plt.scatter(data[titles[xidx]], data[titles[yidx]], c='b')
+plt.scatter(data[titles[xidx]], data[titles[yidx]], c='b') # show robot path in blue
 plt.xlabel(titles[xidx])
 plt.ylabel(titles[yidx])
 plt.show()
