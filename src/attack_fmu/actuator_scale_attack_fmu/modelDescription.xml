@@ -3,7 +3,7 @@
 		modelName="actuator_scale_attack_fmu"
 		guid="{abb4bff1-d423-4e02-90d9-011f519869ff}"
 		description=""
-		author="Nicola Ferrante"
+		author="Lorenzo Cima"
 		version="Version 1"
 		copyright="Copyright (c) 2020 - Lorenzo Cima, Nicola Ferrante, Niccolò Scatena - Università di Pisa - All Rights Reserved."
 		license="MIT"

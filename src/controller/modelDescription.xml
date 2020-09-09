@@ -3,10 +3,10 @@
 		modelName="line_following_robot_4S"
 		guid="{abb4bff1-d423-4e02-90d9-011f519869ff}"
 		description=""
-		author="..author name.."
+		author="Lorenzo Cima, Nicola Ferrante, Niccolò Scatena"
 		version="Version 1"
-		copyright=""
-		license="PVS License"
+		copyright="Copyright (c) 2020 - Lorenzo Cima, Nicola Ferrante, Niccolò Scatena (Università di Pisa)"
+		license="MIT"
 		generationTool="PVSio-web"
 		variableNamingConvention="flat"
 		numberOfEventIndicators="0">
