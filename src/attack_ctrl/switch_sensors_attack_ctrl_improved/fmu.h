@@ -15,7 +15,7 @@
 
 #include "./fmi/fmi2Functions.h"
 #include "FmuGUID.h"
-#include "misraC/switch_sensors_attack_ctrl_improved.h"
+#include "misraC/switch_sensors_attack_ctrl.h"
 
 
 #define BOOL_COUNT 11

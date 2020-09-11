@@ -20,6 +20,11 @@ typedef struct {
 	float64_t mediumRotate;
 	float64_t servoLeftVal;
 	float64_t servoRightVal;
+	float64_t time;
+	float64_t step_size;
+	float64_t attack_time;
+	float64_t attack_duration;
+	bool cyclic;
 } State;
 
 void init(State* st);

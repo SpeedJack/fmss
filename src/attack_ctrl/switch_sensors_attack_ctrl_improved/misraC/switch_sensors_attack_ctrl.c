@@ -1,4 +1,4 @@
-#include "switch_sensors_attack_ctrl_improved.h"
+#include "switch_sensors_attack_ctrl.h"
 
 #define LSR_THRESHOLD 150.0f
 #define MID_WEIGHT 2.0f /*Used for weighted average*/
@@ -18,6 +18,11 @@ void init(State* st)
 	st->mediumRotate = 0.2f;
 	st->servoLeftVal = 0.0f;
 	st->servoRightVal = 0.0f;
+	st->time = 0.0f;
+	st->step_size = 0.1f;
+	st->attack_time = 0.0f;
+	st->attack_duration = 0.0f;
+	st->cyclic = false;
 }
 
 void enter(Mode m, State* st)
@@ -32,13 +37,23 @@ void leave(Mode m, State* st)
 
 void sensor_attack(State* st)
 {
+	/* reset attack cycle if needed */
+	if (st->mode == AUTO && st->cyclic && st->attack_duration > 0.0f
+			&& ((st->time + 0.00001f) > (st->attack_time + st->attack_duration)))
+		st->time = 0;
 	/* attack */
-	float64_t farRightTmp = st->lfFarRightVal;
-	float64_t midRightTmp = st->lfMidRightVal;
-	st->lfFarRightVal = st->lfFarLeftVal;
-	st->lfMidRightVal = st->lfMidLeftVal;
-	st->lfFarLeftVal = farRightTmp;
-	st->lfMidLeftVal = midRightTmp;
+	if (st->mode == AUTO
+			&& ((st->time + 0.00001f) > st->attack_time)
+			&& ((st->attack_duration - 0.00001f) <= 0.0f
+				|| ((st->time - st->attack_time + 0.00001f) < st->attack_duration))) {
+		float64_t farRightTmp = st->lfFarRightVal;
+		float64_t midRightTmp = st->lfMidRightVal;
+		st->lfFarRightVal = st->lfFarLeftVal;
+		st->lfMidRightVal = st->lfMidLeftVal;
+		st->lfFarLeftVal = farRightTmp;
+		st->lfMidLeftVal = midRightTmp;
+	}
+	st->time += st->step_size;
 }
 
 State* tick(State* st)
@@ -47,6 +62,7 @@ State* tick(State* st)
 	float64_t lfLeftVal = 0.0f;
 	if(st->mode == AUTO) {
 		sensor_attack(st);
+		/* compute sensor mean with weights */
 		lfRightVal = (st->lfFarRightVal * FAR_WEIGHT + st->lfMidRightVal * MID_WEIGHT) / (MID_WEIGHT + FAR_WEIGHT);
 		lfLeftVal = (st->lfFarLeftVal * FAR_WEIGHT + st->lfMidLeftVal * MID_WEIGHT) /  (MID_WEIGHT + FAR_WEIGHT);
 

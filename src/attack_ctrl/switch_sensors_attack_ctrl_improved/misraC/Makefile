@@ -4,8 +4,8 @@ CC = gcc
 CFLAGS = -Wall -O2 -Werror -Wmissing-noreturn -Wpacked -Wunreachable-code
 LDFLAGS= -lm
 DEBUG = -Wall -O2 -Werror -Wmissing-noreturn -Wpacked -Wunreachable-code -D DEBUG
-HEAD = switch_sensors_attack_ctrl_improved.h
-SOURCES = switch_sensors_attack_ctrl_improved.c main.c
+HEAD = switch_sensors_attack_ctrl.h
+SOURCES = switch_sensors_attack_ctrl.c main.c
 OBJ = $(SOURCES:.c=.o)
 DEBUGFILES = main.dSYM
 

@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-I.
-FMUNAME = switch_sensors_attack_ctrl_improved
+FMUNAME = switch_sensors_attack_ctrl
 DESTDIR = ../../../into-cps/FMUs
 DESTFILES = switch_sensors_attack_ctrl_improved.fmu
 
