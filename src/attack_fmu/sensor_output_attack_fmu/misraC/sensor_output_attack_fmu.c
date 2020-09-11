@@ -49,6 +49,8 @@ State* tick(State* st)
 		st->output = st->input + st->input * st->attack_value;
 		if (st->output > 255.0f)
 			st->output = 255.0f;
+		if (st->output < 0.0f)
+			st->output = 0.0f;
 		st->time = st->time + st->step_size;
 		enter(X1, st);
 	} else if (st->mode == X1) { /* do nothing: forward input */
