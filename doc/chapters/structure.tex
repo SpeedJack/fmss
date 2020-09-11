@@ -6,8 +6,8 @@ The system is composed by three types of FMUs: sensor, control and plant.
 	\item Sensor FMUs are four (far left, mid left, mid right, far right),
 		everyone corresponds to a different sensor into the line
 		follower robot. Sensors produce values from 0 to 255. The value
-		0 represents a white line; the value 255 a black line and the
-		other values are different tonalities of grey.
+		0 represents the black color; the value 255 the white color and
+		the other values are different tonalities of grey.
 	\item The control FMU produces value for the speed of the two wheels,
 		having in input values from sensors. For the left wheel values
 		are positive and go from 0 to 1; for the right wheel values are
@@ -51,3 +51,12 @@ improving also the resilience to possible erratic transient values.
 
 \lstinputlisting[language=C, label={lst:control}, caption={Control
 algorithm.}]{controller.c}
+
+\figref{fig:robotpath} shows the path followed by the robot when it is not
+attacked.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{robot-path}
+	\caption{Line follower robot following the path}\label{fig:robotpath}
+\end{figure}
