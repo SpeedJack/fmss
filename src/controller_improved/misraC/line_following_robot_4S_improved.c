@@ -1,8 +1,6 @@
-#include "line_following_robot_4S.h"
+#include "line_following_robot_4S_improved.h"
 
 #define LSR_THRESHOLD 150.0f /* 0 = black; 255 = white; line color = white */
-#define MID_WEIGHT 2.0f; /*Used for weighted average*/
-#define FAR_WEIGHT 1.0f;
 
 void init(State* st)
 {
@@ -15,7 +13,7 @@ void init(State* st)
 	st->lfMidLeftVal = 0.0f;
 	st->lfMidRightVal = 0.0f;
 	st->lowRotate = 0.0f;
-	st->mediumRotate = 0.2f;
+	st->mediumRotate = 0.2f; /* not used */
 	st->servoLeftVal = 0.0f;
 	st->servoRightVal = 0.0f;
 }
@@ -35,9 +33,9 @@ State* tick(State* st)
 	float64_t lfRightVal = 0.0f;
 	float64_t lfLeftVal = 0.0f;
 	if(st->mode == AUTO) {
-		/* compute sensor weighted average value */
-		lfRightVal = (st->lfFarRightVal * FAR_WEIGHT + st->lfMidRightVal * MID_WEIGHT) / (MID_WEIGHT + FAR_WERIGHT);
-		lfLeftVal = (st->lfFarLeftVal * FAR_WEIGHT + st->lfMidLeftVal * MID_WEIGHT) /  (MID_WEIGHT + FAR_WERIGHT);
+		/* compute sensor mean */
+		lfRightVal = (st->lfFarRightVal + st->lfMidRightVal) / 2.0f;
+		lfLeftVal = (st->lfFarLeftVal + st->lfMidLeftVal) / 2.0f;
 		if (lfRightVal <= LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD) { /* left black, right black -> forward */
 #ifdef DBG
 			_dbg_print_condition("st->mode == AUTO && (lfRightVal <= LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD)");
