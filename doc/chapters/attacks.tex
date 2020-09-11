@@ -1,0 +1,40 @@
+\chapter{Attacks}
+
+In this chapter we're describing the attacks that we want to simulate using
+INTO-CPS\@. The attacks that we have developed are in the two variants seen
+during the course:
+
+\begin{itemize}
+	\item Control: Attacks that are implemented changing the code of the
+		Controller FMU\@.
+% \begin{figure}[H]
+% \includegraphics[width = 17cm]{img/Attack_control_diagram.pdf}
+% \end{figure}
+	\item FMU\@: Attacks implemented using additional FMUs placed between
+		two legitimate FMUs.
+% \begin{figure}[H]
+% \includegraphics[width = 17cm]{img/FMU_attack_diagram.pdf}
+% \end{figure}
+\end{itemize}
+
+We have developed 6 attacks, 3 for each variant. The attacks on the control FMU
+are the following:
+
+\begin{itemize}
+	\item Actuator Control Attack;
+	\item Complementary Attack;
+	\item Switch Sensors Attack.
+\end{itemize}
+
+The attacks with additional FMUs are the following:
+
+\begin{itemize}
+	\item Actuator Scale Attack;
+	\item Max Speed Attack;
+	\item Sensor Output Attack.
+\end{itemize}
+
+\input{attacks/control_attacks}
+\newpage
+\input{attacks/FMU_attacks}
+
