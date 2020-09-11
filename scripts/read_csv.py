@@ -87,7 +87,7 @@ plt.figure()
 if not args.n: # show path in bg
 	img = plt.imread("map.png")
 	plt.imshow(img, extent=[-0.3, 0.3, -0.4, 0.4])
-plt.scatter(data[titles[xidx]], data[titles[yidx]], c='b') # show robot path in blue
+plt.scatter(data[titles[xidx]], data[titles[yidx]], c=['#E5BE01']) # show robot path in blue
 plt.xlabel(titles[xidx])
 plt.ylabel(titles[yidx])
 plt.show()
