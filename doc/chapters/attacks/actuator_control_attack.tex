@@ -18,3 +18,16 @@ the end of the code{tick(State* st)} function.
 
 \lstinputlisting[language=C, label={lst:actuatorattackcontrol},
 caption={Actuator attack function.}]{actuator_attack_control.c}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/actuator_attack_control.png}
+	\caption{Line follower robot path when
+	attacked}\label{fig:actuatorcontrolresult}
+\end{figure}
+
+In \figref{fig:actuatorcontrolresult} we can see the result of the attack: This
+attack can be easily interpreted looking at the figures, the robot go forward
+for a period of time and then it go backwards for \code{attack duration}
+seconds.
+

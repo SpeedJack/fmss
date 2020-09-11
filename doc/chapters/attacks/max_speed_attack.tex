@@ -31,3 +31,17 @@ The FMU algorithm is shown in \lstref{lst:maxspeedattack}.
 
 \lstinputlisting[language=C, label={lst:maxspeedattack},
 caption={Attack fmu algorithm.}]{max_speed_attack.c}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{max_speed_attack.png}
+	\caption{Line follower robot path when
+	attacked}\label{fig:maxspeedresult}
+\end{figure}
+
+In \figref{fig:maxspeedresult} we can see the result of the attack: the FMUs are
+activated one at a time, so the robot will turn left since the right FMU is
+attacked earlier, then it will go straight, and it will turn right again, since
+the right attack FMU stops injecting attack values. In the last part of the
+figure we can see the robot going straight, this can be explained looking at the
+last legitimate value for the actuators before the attack started.
