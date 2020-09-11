@@ -1,6 +1,6 @@
 #include "line_following_robot_4S.h"
 
-#define LSR_THRESHOLD 150.0f /* 0 = black; 255 = white; line color = white */
+#define LSR_THRESHOLD 150.0f /* 0 = black; 255 = white; line color = black */
 
 
 void init(State* st)
@@ -44,7 +44,7 @@ State* tick(State* st)
 			st->servoLeftVal = st->forwardSpeed;
 			st->servoRightVal = -st->forwardSpeed;
 			enter(AUTO, st);
-		} else if (lfRightVal <= LSR_THRESHOLD && lfLeftVal > LSR_THRESHOLD) { /* left black, right white -> right */
+		} else if (lfRightVal <= LSR_THRESHOLD && lfLeftVal > LSR_THRESHOLD) { /* left white, right black -> right */
 #ifdef DBG
 			_dbg_print_condition("st->mode == AUTO && (lfRightVal <= LSR_THRESHOLD && lfLeftVal > LSR_THRESHOLD)");
 #endif
@@ -52,7 +52,7 @@ State* tick(State* st)
 			st->servoLeftVal = st->highRotate;
 			st->servoRightVal = -st->lowRotate;
 			enter(AUTO, st);
-		} else if (lfRightVal > LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD) { /* left white, right black -> left */
+		} else if (lfRightVal > LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD) { /* left black, right white -> left */
 #ifdef DBG
 			_dbg_print_condition("st->mode == AUTO && (lfRightVal > LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD)");
 #endif

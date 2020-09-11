@@ -65,11 +65,27 @@
 		<ScalarVariable name="servoRightVal" valueReference="10" causality="output" variability="continuous">
 			<Real  />
 		</ScalarVariable>
+		<ScalarVariable name="time" valueReference="11" causality="output" variability="continuous">
+			<Real  />
+		</ScalarVariable>
+		<ScalarVariable name="step_size" valueReference="12" causality="parameter" variability="fixed" initial="exact">
+			<Real start="0.1" />
+		</ScalarVariable>
+		<ScalarVariable name="attack_time" valueReference="13" causality="parameter" variability="fixed" initial="exact">
+			<Real start="0.0" />
+		</ScalarVariable>
+		<ScalarVariable name="attack_duration" valueReference="14" causality="parameter" variability="fixed" initial="exact">
+			<Real start="0.0" />
+		</ScalarVariable>
+		<ScalarVariable name="cyclic" valueReference="15" causality="parameter" variability="fixed" initial="exact">
+			<Boolean start="false" />
+		</ScalarVariable>
 	</ModelVariables>
 	<ModelStructure>
 		<Outputs>
 			<Unknown index="9" dependencies=""/>
 			<Unknown index="10" dependencies=""/>
+			<Unknown index="11" dependencies=""/>
 		</Outputs>
 	</ModelStructure>
 </fmiModelDescription>

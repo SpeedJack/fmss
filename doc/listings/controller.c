@@ -12,13 +12,13 @@ State* tick(State* st)
 			st->servoLeftVal = st->forwardSpeed;
 			st->servoRightVal = -st->forwardSpeed;
 			enter(AUTO, st);
-		} else if (lfRightVal <= LSR_THRESHOLD && lfLeftVal > LSR_THRESHOLD) { /* left black, right white -> right */
+		} else if (lfRightVal <= LSR_THRESHOLD && lfLeftVal > LSR_THRESHOLD) { /* left white, right black -> right */
 
 			leave(AUTO, st);
 			st->servoLeftVal = st->highRotate;
 			st->servoRightVal = -st->lowRotate;
 			enter(AUTO, st);
-		} else if (lfRightVal > LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD) { /* left white, right black -> left */
+		} else if (lfRightVal > LSR_THRESHOLD && lfLeftVal <= LSR_THRESHOLD) { /* left black, right white -> left */
 
 			leave(AUTO, st);
 			st->servoLeftVal = st->lowRotate;

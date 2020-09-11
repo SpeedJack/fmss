@@ -34,6 +34,10 @@ void doStep(ModelInstance* comp, const char* action)
 		comp->st.highRotate = comp->fmiBuffer.realBuffer[2];
 		comp->st.lowRotate = comp->fmiBuffer.realBuffer[7];
 		comp->st.mediumRotate = comp->fmiBuffer.realBuffer[8];
+		comp->st.step_size = comp->fmiBuffer.realBuffer[12];
+		comp->st.attack_time = comp->fmiBuffer.realBuffer[13];
+		comp->st.attack_duration = comp->fmiBuffer.realBuffer[14];
+		comp->st.cyclic = comp->fmiBuffer.booleanBuffer[15];
 		comp->first = 1;
 	}
 
@@ -44,6 +48,7 @@ void doStep(ModelInstance* comp, const char* action)
 
 	tick(&comp->st);
 
+	comp->fmiBuffer.realBuffer[11] = comp->st.time;
 	comp->fmiBuffer.realBuffer[9] = comp->st.servoLeftVal;
 	comp->fmiBuffer.realBuffer[10] = comp->st.servoRightVal;
 
