@@ -1,11 +1,15 @@
 \chapter{Improvements to the Controller}
 
-\ldots
+To improve the resilience for attacks the control unit is updated using a
+different algorithm to compute values for actuators. In particular, instead of
+a simple average between the two left sensors and the two right sensors, a
+weighted average is used. The weights are the distances between the robot's
+center and the position off the other sensor in the same side. So far values
+uses as weights mid distance and vice versa.
 
 \section{Attacks}
-
-\ldots
 
 \input{improvedattacks/complementary-attack}
 \input{improvedattacks/sensor-switch-attack}
 \input{improvedattacks/sensor-output-attack}
+
