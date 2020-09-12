@@ -5,16 +5,24 @@ version after the attack it passes through the race before continue with the
 normal path, in the improved version it follows the path immediately after the
 attack.
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=0.5\textwidth]{img/mm_sensor_output_attack_improved.png}
-	\caption{Line follower robot path when
-	attacked into the improved controller}\label{fig:senoutimpatkresult}
-\end{figure}
+\figref{fig:sensoroutputattackresults} shows the comparison between the result
+of the attack in the normal controller and in the improved controller.
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.5\textwidth]{img/sensors-output-attack.png}
-	\caption{Line follower robot path when
-	attacked into the normal controller}\label{fig:senoutatkresult}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{sensors-output-attack}
+		\caption{Line follower robot path when
+		attacked into the normal controller}\label{fig:senoutatkresult}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{mm_sensor_output_attack_improved}
+		\caption{Line follower robot path when
+		attacked into the improved controller}\label{fig:senoutimpatkresult}
+	\end{subfigure}
+	\caption{Comparison between the normal and the improved controller in
+	the Sensor Output Attack}\label{fig:sensoroutputattackresults}
 \end{figure}
